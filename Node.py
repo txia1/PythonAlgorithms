@@ -33,6 +33,7 @@ class UnorderedList:
         count = 0
         while current!= None:
             current = current.getNext()
+            print(current)
             count = count + 1
         return count
 
@@ -40,6 +41,7 @@ class UnorderedList:
         current = self.head
         found = False
         while current != None and not found:
+            print(current.getData())
             if current.getData() == item:
                 found = True
             else:
@@ -63,6 +65,15 @@ class UnorderedList:
         else: #if inside the list, skip the node you want to remove, link to the next
             previous.setNext(current.getNext())
 
+    def pop(self):
+        currentNode = self.head
+        previousNode = None
+        while currentNode != None:
+            previousNode = currentNode
+            currentNode = currentNode.getNext()
+        self.remove(previousNode)
+        return previousNode.getData
+
 mylist = UnorderedList()
 
 mylist.add(31)
@@ -72,6 +83,6 @@ mylist.add(93)
 mylist.add(26)
 mylist.add(54)
 
+
+print(mylist.search(54))
 print(mylist.size())
-print(mylist.search(93))
-print(mylist.search(100))
